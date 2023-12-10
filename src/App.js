@@ -1,23 +1,53 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+const App = () => {
 
-function App() {
+  const [city, setCity] = useState(null);
+  const [search, setSearch] = useState("null");
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=a8f11b8489d2141435a902ed83df15e2`;
+      const response = await fetch(url);
+      const resjson = await response.json();
+      setCity(resjson.main);
+      console.log(resjson);
+    }
+    fetchApi();
+  }, [search])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      {/* // navbar */}
+      <header className='nav_container' >
+        <ul className='navbar'>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Makers</li>
+        </ul>
       </header>
+
+      <div className='big'>
+        {/* whole weather conatiner  */}
+        <div className='container'>
+          <div className='heading'>
+            <h2>SkyCast</h2>
+          </div>
+          <div >
+            <input className='input' type='search' onChange={(event) => { setSearch(event.target.value) }} />
+          </div>
+          {
+            !city ? (
+              <p>No data yet</p>
+            ) :
+              <div className='content'>
+                <h3>{search}</h3>
+                <h4>Temperature: {city.temp}</h4>
+                <h4>Pressure: {city.pressure}</h4>
+              </div>
+          }
+        </div>
+      </div>
     </div>
   );
 }
