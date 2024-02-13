@@ -35,8 +35,8 @@ const App = () => {
             ) :
               <div className='content'>
                 <h3>{search}</h3>
-                <h4>Temperature: {city.temp}</h4>
-                <h4>Pressure: {city.pressure}</h4>
+                <h4>Temperature: {city.temp}°F</h4>
+                <h4>Pressure: {city.pressure}hPa</h4>
               </div>
           }
         </div>
