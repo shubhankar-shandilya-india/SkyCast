@@ -14,5 +14,4 @@
 
 ## Live Link
 - https://skycaast.netlify.app/
-
-![Web capture_16-12-2023_162637_skycaast netlify app](https://github.com/shubhankar-shandilya-india/SkyCast/assets/78155393/36db8409-cf3a-4047-8f83-b029b925fa71)
+![Screenshot_14-2-2024_11145_wonderful-smakager-bbd5a5 netlify app](https://github.com/shubhankar-shandilya-india/SkyCast/assets/78155393/18543c87-37b0-4eae-b14d-ab75758517e6)
