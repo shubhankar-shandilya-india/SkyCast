@@ -18,14 +18,7 @@ const App = () => {
 
   return (
     <div>
-      {/* // navbar */}
-      <header className='nav_container' >
-        <ul className='navbar'>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Makers</li>
-        </ul>
-      </header>
+      
 
       <div className='big'>
         {/* whole weather conatiner  */}
