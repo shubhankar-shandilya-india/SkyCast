@@ -1,9 +1,9 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-const App = () => {
 
+const App = () => {
   const [city, setCity] = useState(null);
-  const [search, setSearch] = useState("null");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -13,36 +13,47 @@ const App = () => {
       setCity(resjson.main);
       console.log(resjson);
     }
-    fetchApi();
-  }, [search])
+
+    if (search.trim() !== "") {
+      fetchApi();
+    }
+  }, [search]);
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      setSearch(event.target.value);
+    }
+  };
 
   return (
     <div>
-      
-
       <div className='big'>
-        {/* whole weather conatiner  */}
+        <h1 className='heading'>SkyCast</h1>
         <div className='container'>
           <div className='heading'>
             <h2>SkyCast</h2>
           </div>
-          <div >
-            <input className='input' type='search' onChange={(event) => { setSearch(event.target.value) }} />
+          <div>
+            <input
+              className='input'
+              type='search'
+              placeholder='Enter City'
+              onKeyPress={handleKeyPress}
+            />
           </div>
-          {
-            !city ? (
-              <p>No data yet</p>
-            ) :
-              <div className='content'>
-                <h3>{search}</h3>
-                <h4>Temperature: {city.temp}°F</h4>
-                <h4>Pressure: {city.pressure}hPa</h4>
-              </div>
-          }
+          {!city ? (
+            <p>No data yet</p>
+          ) : (
+            <div className='content'>
+              <h3>{search}</h3>
+              <h4>Temperature: {city.temp}°F</h4>
+              <h4>Pressure: {city.pressure}hPa</h4>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
