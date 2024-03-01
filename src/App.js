@@ -41,9 +41,7 @@ const App = () => {
               onKeyPress={handleKeyPress}
             />
           </div>
-          {!city ? (
-            <p>No data yet</p>
-          ) : (
+          {!city ? null : (
             <div className='content'>
               <h3>{search}</h3>
               <h4>Temperature: {city.temp}°F</h4>
